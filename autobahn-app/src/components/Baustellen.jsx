@@ -8,25 +8,21 @@ const Baustellen = () => {
   useEffect(() => {
     fetch(`https://verkehr.autobahn.de/o/autobahn/${roadId}/services/roadworks`)
       .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        if (data && Array.isArray(data.roadworks)) {
-          setBaustellen(data.roadworks); 
-        } else {
-          setBaustellen([]); 
-        }
+      .then((data) => {
+        console.log(data); 
+          setBaustellen(data.roadworks);   
       })
       .catch(error => {
         console.error(error);
       });
-  }, [roadId]);
+  }, []);
 
 
   return (
     <div>
       <h1>Baustellen auf der Autobahn {roadId}</h1>
       <ul>
-        {Array.isArray(baustellen) && baustellen.length > 0 ? (
+        { baustellen.length > 0 ? (
           baustellen.map((baustelle, index) => (
             <li key={index}>{baustelle.description}</li>
           ))

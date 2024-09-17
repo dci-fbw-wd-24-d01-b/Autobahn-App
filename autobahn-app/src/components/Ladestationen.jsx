@@ -9,7 +9,7 @@ const Ladestationen = () => {
     fetch(`https://verkehr.autobahn.de/o/autobahn/${roadId}/services/electric_charging_station`)
     .then(response => response.json())
       .then((data) => {
-        setLadestationen(data);
+        setLadestationen(data.electric_charging_station);
       })
       .catch(error => {
         console.error(error);

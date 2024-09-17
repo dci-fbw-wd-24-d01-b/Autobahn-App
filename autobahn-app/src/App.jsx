@@ -8,7 +8,6 @@ import Ladestationen from './components/Ladestationen';
 
 function App() {
   return (
-    <Router>
       <Routes>
         <Route path="/" element={<AutobahnListe />} />
         <Route path="/autobahn/:roadId" element={<AutobahnDetail />} />
@@ -16,7 +15,6 @@ function App() {
         <Route path="/autobahn/:roadId/warnungen" element={<Warnungen />} />
         <Route path="/autobahn/:roadId/ladestationen" element={<Ladestationen />} />
       </Routes>
-    </Router>
   );
 }
 

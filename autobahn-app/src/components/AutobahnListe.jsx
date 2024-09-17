@@ -3,31 +3,31 @@ import { Link, useParams } from 'react-router-dom';
 
 const AutobahnListe = () => {
   const [autobahnen, setAutobahnen] = useState([]);
-  const { roadId } = useParams();
+  // const { roadId } = useParams();
 
   useEffect(() => {
     fetch('https://verkehr.autobahn.de/o/autobahn')
       .then(response => response.json())
-      .then(data => setAutobahnen(data))
+      .then(data => setAutobahnen(data.roads))
        
       .catch(error => console.error( error));
   }, []);
 
   return (
     <div>
-      <h1>Autobahnen</h1>
+      <h1 >Autobahnen</h1>
       <ul>
-        {Array.isArray(autobahnen) && autobahnen.length > 0 ? (
+        { autobahnen.length > 0 ? (
           autobahnen.map((autobahn, index) => (
             <li key={index}>
-              <h2>{autobahn.name}</h2>
-              <Link to={`/autobahn/:${roadId}/baustellen`}>
+              <h2>{autobahn}</h2>
+              <Link to={`/autobahn/${autobahn}/baustellen`}>
                 <button>Baustellen</button>
               </Link>
-              <Link to={`/autobahn/:${roadId}/warnungen`}>
+              <Link to={`/autobahn/${autobahn}/warnungen`}>
                 <button>Warnungen</button>
               </Link>
-              <Link to={`/autobahn/:${roadId}/ladestationen`}>
+              <Link to={`/autobahn/${autobahn}/ladestationen`}>
                 <button>Ladestationen</button>
               </Link>
             </li>

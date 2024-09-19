@@ -1,0 +1,89 @@
+
+.autobahn-list-container { 
+    background-image: url("shutterstock_1936046326.jpg"); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 40px;
+    min-height: 100vh;
+    color: #fff;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  h1 {
+    font-size: 80px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: black;
+    
+  }
+  
+  .search-input {
+    padding: 10px 15px;
+    width: 300px;
+    border-radius: 8px;
+    border: 2px solid #007BFF;
+    font-size: 16px;
+    margin-bottom: 20px;
+    outline: none;
+    background: rgb(237, 229, 229);
+  }
+  
+  .autobahn-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  .autobahn-item {
+    background: rgba(47, 41, 46, 0.7);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .autobahn-item:hover {
+    transform: scale(1.03); 
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .action-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .action-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .load-more-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    width: 300px;
+  }
+  
+  .load-more-button:hover {
+    background-color: #218838;
+  }

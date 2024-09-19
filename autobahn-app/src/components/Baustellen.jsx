@@ -1,35 +1,49 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './AutobahnListe.css';
 
 const Baustellen = () => {
   const { roadId } = useParams();
   const [baustellen, setBaustellen] = useState([]);
+  const [visibleBaustellenCount, setVisibleBaustellenCount] = useState(3);
 
   useEffect(() => {
     fetch(`https://verkehr.autobahn.de/o/autobahn/${roadId}/services/roadworks`)
       .then(response => response.json())
       .then((data) => {
-        console.log(data); 
-          setBaustellen(data.roadworks);   
+          setBaustellen(data.roadworks);
       })
       .catch(error => {
         console.error(error);
       });
-  }, []);
+  }, [roadId]);
 
+  const visibleBaustellen = baustellen.slice(0, visibleBaustellenCount);
 
   return (
-    <div>
+    <div className="autobahn-list-container">
       <h1>Baustellen auf der Autobahn {roadId}</h1>
       <ul>
-        { baustellen.length > 0 ? (
-          baustellen.map((baustelle, index) => (
-            <li key={index}>{baustelle.description}</li>
+        {visibleBaustellen.length > 0 ? (
+          visibleBaustellen.map((baustelle, index) => (
+            <li 
+              key={index}  className="autobahn-item" 
+            >
+              {baustelle.description}
+            </li>
           ))
         ) : (
           <p>Keine Baustellen gefunden.</p>
         )}
       </ul>
+   
+        <button 
+          onClick={() => setVisibleBaustellenCount(prevCount => prevCount + 10)} 
+          className="load-more-button"
+        >
+          Mehr Laden
+        </button>
+      
     </div>
   );
 };
